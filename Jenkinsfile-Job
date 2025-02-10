@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven' // Name must match the Maven installation in Jenkins Global Tool Configuration
+    }
+
+    stages {
+        stage('Verify Java Version') {
+            steps {
+                sh '''
+                    env | grep -e PATH -e JAVA_HOME
+                    which java
+                    java -version
+                    mvn -v
+                '''
+            }
+        }
+
+    stage('SonarQube Scanner Code Analysis') {
+      steps {
+        withSonarQubeEnv(credentialsId: 'folder-1-pipeline-regression-credential1', installationName: 'SonarQube_Server') {
+          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=conjur-credentials -Dsonar.projectName='conjur-credentials'"
+        }
+      }
+    }
+
+ 
+
+       /*stage('Folder-1-Job-Conjur-Credentials With SonarQube') {
+    steps {
+        script {
+            varVal = null
+            // Fetch Conjur secret credentials
+            withCredentials([conjurSecretCredential(credentialsId: 'folder-1-pipeline-regression-credential1', variable: 'CONJUR_SECRET')]) {
+                varVal = CONJUR_SECRET
+            }
+            echo "Job-Jenkins Conjur Secret Username Cred PWD Val  : ${varVal}"
+
+            // Run SonarQube analysis using mvn with environment variable
+            //withSonarQubeEnv(credentialsId: 'sonarqube-sever-token-ID', installationName: 'SonarQube_Server') {
+                //withEnv(["SONAR_AUTH_TOKEN=${varVal}"]) {
+                    sh """
+                        mvn clean verify sonar:sonar \
+                            -Dsonar.projectKey=conjur-credentials \
+                            -Dsonar.projectName="conjur-credentials" \
+                            -Dsonar.host.url=http://192.168.1.2:9000/ \
+                            -Dsonar.login=${varVal}
+                    """
+                ///}
+            //}
+        }
+    }
+}*/
+
+    }
+}

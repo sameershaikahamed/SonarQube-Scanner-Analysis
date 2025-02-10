@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven' // Name must match the Maven installation in Jenkins Global Tool Configuration
+
+        
+       
+         
+    }
+    environment {
+        SONARQUBE = 'SonarQube_Server' // Name of the SonarQube server in Jenkins configuration
+        
+        SONARQUBE_URL = 'http://192.168.1.2:9000'
+        SONARQUBE_TOKEN = credentials('sonarqube-sever-token-ID')
+ 
+    }
+    stages {
+       stage('Checkout') {
+            steps {
+                 checkout scm
+            }
+        }
+
+    stage('Check Java Version') {
+                steps {
+                    sh 'java -version'
+                  sh 'mvn -version'
+                }
+            }
+
+stage('Build & SonarQube Analysis') {
+
+steps {
+               
+                  sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube-test -Dsonar.host.url=http://192.168.1.2:9000 -Dsonar.login=$SONARQUBE_TOKEN -DskipTests'
+            }
+
+} 
+    }
+}
