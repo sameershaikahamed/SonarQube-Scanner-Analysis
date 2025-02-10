@@ -1,0 +1,8 @@
+#surefire_0
+#Mon Feb 10 13:14:18 IST 2025
+style.color=always
+basedir=/Users/sameer.shaik/MyWorkSpace/Github-Sonar-Qube-Code-Analysis10022025/SonarQube-Scanner-Analysis
+java.io.tmpdir=/Users/sameer.shaik/MyWorkSpace/Github-Sonar-Qube-Code-Analysis10022025/SonarQube-Scanner-Analysis/target/tmp
+hudson.udp=-1
+java.awt.headless=true
+localRepository=/Users/sameer.shaik/.m2/repository

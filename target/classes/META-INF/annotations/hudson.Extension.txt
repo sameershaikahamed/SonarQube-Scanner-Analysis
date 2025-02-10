@@ -1,0 +1,13 @@
+# informational; use java -jar sezpoz.jar to see authoritative contents
+org.conjur.jenkins.configuration.ConjurConfiguration$DescriptorImpl
+org.conjur.jenkins.configuration.ConjurJITJobProperty$ConjurJITJobPropertyDescriptorImpl
+org.conjur.jenkins.configuration.FolderConjurConfiguration$DescriptorImpl
+org.conjur.jenkins.configuration.GlobalConjurConfiguration
+org.conjur.jenkins.conjursecrets.ConjurSecretCredentialsBinding$DescriptorImpl
+org.conjur.jenkins.conjursecrets.ConjurSecretCredentialsImpl$DescriptorImpl
+org.conjur.jenkins.conjursecrets.ConjurSecretUsernameCredentialsBinding$DescriptorImpl
+org.conjur.jenkins.conjursecrets.ConjurSecretUsernameCredentialsImpl$DescriptorImpl
+org.conjur.jenkins.conjursecrets.ConjurSecretUsernameSSHKeyCredentialsBinding$DescriptorImpl
+org.conjur.jenkins.conjursecrets.ConjurSecretUsernameSSHKeyCredentialsImpl$DescriptorImpl
+org.conjur.jenkins.credentials.ConjurCredentialProvider
+org.conjur.jenkins.jwtauth.impl.JwtAuthenticationServiceImpl
